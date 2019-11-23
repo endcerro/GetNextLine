@@ -1,3 +1,0 @@
-LINE READ = hello this is the sample file i use to read and this is still in the first line
-LINE READ = This is the second line
-LINE READ = and this is the fourth
