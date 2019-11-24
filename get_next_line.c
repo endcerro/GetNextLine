@@ -41,7 +41,7 @@ char	*ft_strjoin_buff(char *cache, char *s2)
 	return (cp);
 }
 
-char	*buff_2_cache(char *buffer, int read_status)
+char	*buff_2_cache(char *buffer, int *read_status)
 {
 	static char *cache;
 	char		*out;
@@ -50,18 +50,23 @@ char	*buff_2_cache(char *buffer, int read_status)
 
 	out = NULL;
 	cache = ft_strjoin_buff(cache, buffer);
+	if (cache[0] == 0)
+	{
+		cache = NULL;
+		return (NULL);
+	}
 	end_of_line = ft_strchr_int(cache, '\n');
-	if (end_of_line != 0)
+	if (*read_status == 0 && end_of_line == -1)
+		end_of_line = ft_strchr_int(cache, '\0');
+	if (end_of_line != -1)
 	{
 		out = ft_substr(cache, 0, end_of_line);
 		tmp = ft_strdup(cache + end_of_line + 1);
 		if (cache != NULL)
 			free(cache);
 		cache = tmp;
+		*read_status = 1;
 	}
-	else if (read_status == 0)
-		out = cache;
-	printf("LINE READ = %s\n", out);
 	return (out);
 }
 
@@ -72,7 +77,11 @@ int		get_next_line(int fd, char **line)
 
 	initbfr(buffer);
 	read_status = read(fd, buffer, BUFFER_SIZE);
-	buff_2_cache(buffer, read_status);
-	line = NULL;
+	if (*line != NULL)
+	{
+		free(*line);
+		*line = 0;
+	}
+	*line = buff_2_cache(buffer, &read_status);
 	return (read_status);
 }

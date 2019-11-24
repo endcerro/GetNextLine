@@ -32,7 +32,7 @@ void	initbfr(char *buff)
 
 	i = 0;
 	while (i < BUFFER_SIZE)
-		buff[i++] = 0;
+		buff[i++] = '\0';
 }
 
 int		ft_strlen(char *str)
@@ -76,5 +76,5 @@ int		ft_strchr_int(const char *str, int c)
 			return (i);
 	if (str[i] == c)
 		return (i);
-	return (0);
+	return (-1);
 }

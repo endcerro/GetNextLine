@@ -4,20 +4,20 @@
 int main()
 {
     int fd = open("./toread.txt", O_RDONLY);
-	//printf("FD = %d\n",fd );
-	//get_next_line(fd, 0);
-	//printf("END OF THE FIRST CALL\n\n\n");
-	//get_next_line(fd, 0);
-	//printf("END OF THE SECOND CALL\n\n\n");
-	//get_next_line(fd, 0);
-	//printf("END OF THE THIRD CALL\n\n\n");
-	//get_next_line(fd, 0);
-	//printf("END OF THE FOURTH CALL\n\n\n");
-	//get_next_line(fd, 0);
+	char **line;
+	line = malloc(sizeof(char*));
+	if(line == NULL)
+		return (0);
+	*line = NULL;
 	int status = 1;
 	while(status != 0)
 	{
-		status = get_next_line(fd, 0);
+		status = get_next_line(fd, line);
+		if(*line != NULL)
+			printf("|%s|\n",*line);
 	}
+	free(*line);
+	free(line);
+	close(fd);
 	return 0;
 }
