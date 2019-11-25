@@ -19,6 +19,7 @@ char	*ft_strdup(const char *s1)
 
 	if (!(p = malloc(sizeof(char) * (ft_strlen((char *)s1) + 1))))
 		return (0);
+	//printf("MALLOC P IN ft_strdup\n");
 	i = -1;
 	while (s1[++i])
 		p[i] = s1[i];
@@ -59,6 +60,7 @@ char	*ft_substr(char const *s, int start, size_t len)
 		return (ft_strdup(""));
 	if (!(out = malloc(sizeof(char) * (len + 1))))
 		return (0);
+	//printf("MALLOC OUT in ft_substr\n");
 	cp = out;
 	while (s[start + i] && i < len)
 		*(out++) = s[start + i++];

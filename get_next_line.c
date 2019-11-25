@@ -28,6 +28,7 @@ char	*ft_strjoin_buff(char *cache, char *s2)
 		return (0);
 	if (!(out = malloc(sizeof(char) * sz)))
 		return (0);
+	//printf("MALLOC OUT in ft_strjoin_buff\n");
 	cp = out;
 	if (cache != NULL)
 		while (cache[i])
@@ -36,8 +37,10 @@ char	*ft_strjoin_buff(char *cache, char *s2)
 	while (sz < BUFFER_SIZE)
 		*(out++) = s2[sz++];
 	*out = 0;
-	if (cache != NULL)
+	if (cache != NULL){
 		free(cache);
+		//printf("FREED CACHE in ft_strjoin_buff\n");
+	}
 	return (cp);
 }
 
@@ -52,6 +55,7 @@ char	*buff_2_cache(char *buffer, int *read_status)
 	cache = ft_strjoin_buff(cache, buffer);
 	if (cache[0] == 0)
 	{
+		free(cache);
 		cache = NULL;
 		return (NULL);
 	}
@@ -62,8 +66,10 @@ char	*buff_2_cache(char *buffer, int *read_status)
 	{
 		out = ft_substr(cache, 0, end_of_line);
 		tmp = ft_strdup(cache + end_of_line + 1);
-		if (cache != NULL)
+		if (cache != NULL){
 			free(cache);
+			//printf("FREED CACHE in buff_2_cache\n");
+		}
 		cache = tmp;
 		*read_status = 1;
 	}
@@ -80,6 +86,7 @@ int		get_next_line(int fd, char **line)
 	if (*line != NULL)
 	{
 		free(*line);
+		//printf("FREED *LINE in get_next_line\n");
 		*line = 0;
 	}
 	*line = buff_2_cache(buffer, &read_status);
