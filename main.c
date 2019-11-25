@@ -1,10 +1,10 @@
 #include "get_next_line.h"
 #include <fcntl.h>
 
-int main(int ac, char *av[ac])
+int main()
 {
 
-    int fd = open(av[1], O_RDONLY);
+    int fd = open("./toread.txt", O_RDONLY);
 	char **line;
 	line = malloc(sizeof(char*));
 	//printf("MALLOC LINE  in main \n");
@@ -15,17 +15,15 @@ int main(int ac, char *av[ac])
 	while(status != 0)
 	{
 		status = get_next_line(fd, line);
-		//if(*line != NULL)
-		//	printf("|%s|\n",*line);
+		if(*line != NULL)
+			printf("|%s|\n",*line);
 	}
 	free(*line);
-	//printf("FREED *LINE in main \n");
 	free(line);
-	//printf("FREED LINE  in main \n");
 	close(fd);
 	// while(1 == 1)
 	// {
-
+	//gcc -Wall -Wextra -Werror -g -fsanitize=address -D BUFFER_SIZE=23 get_next_line.c get_next_line_utils.c main.c
 	// }
 	return 0;
 }
