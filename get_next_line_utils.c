@@ -26,6 +26,7 @@ char	*ft_strdup(const char *s1)
 	return (p);
 }
 
+//Remplissage du buffer avec des \0;
 void	initbfr(char *buff)
 {
 	int i;
@@ -65,6 +66,8 @@ char	*ft_substr(char const *s, int start, size_t len)
 	*out = 0;
 	return (cp);
 }
+
+//On cherche un char et renvoie son index, -1 si not found
 
 int		ft_strchr_int(const char *str, int c)
 {

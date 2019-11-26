@@ -19,6 +19,16 @@
 
 # include <unistd.h>
 
+
+typedef struct		fd_lst
+{
+	int				*fd;
+	char			*cache;
+	struct fd_lst	*next;
+	struct fd_lst	*previous;
+
+}					fd_list;
+
 void	initbfr(char *buff);
 int		get_next_line(int fd, char **line);
 char	*ft_strjoin(char *s1, char *s2);
