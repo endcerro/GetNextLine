@@ -15,30 +15,30 @@
 char	*ft_strjoin_buff(char *cache, char *s2)
 {
 	char	*out;
+	char	*cp;
 	int		size;
-	int		i;
 
-	i = -1;
 	size = 1;
-	size += ft_strlen(cache);
-	size += BUFFER_SIZE;
+	size += ft_strlen(cache) + BUFFER_SIZE;
 	if (!cache && !s2)
 		return (NULL);
 	if (!(out = malloc(sizeof(char) * size)))
 		return (NULL);
+	cp = out;
+	size = 0;
 	if (cache != NULL)
-		while (cache[++i])
-			out[i] = cache[i];
+		while (cache[size])
+			*(out++) = cache[size++];
 	size = 0;
 	while (size < BUFFER_SIZE)
-		out[i++] = s2[size++];
-	out[i] = '\0';
+		*(out++) = s2[size++];
+	*out = '\0';
 	if (cache != NULL)
 	{
 		free(cache);
 		cache = NULL;
 	}
-	return (out);
+	return (cp);
 }
 
 char	*buff_2_cache(char *buffer, int *read_status)
