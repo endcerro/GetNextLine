@@ -16,8 +16,12 @@ int main(int ac, char *av[ac])
 	{
 		status = get_next_line(fd, line);
 		//printf("status %d\n",status );
+		printf("output = %d\n",status );
 		if(*line != NULL)
-			printf("|%s\n",*line);
+		{
+			printf("Read = %d\n",status );
+			printf("%s\n",*line);
+		}
 	}
 	free(*line);
 	free(line);

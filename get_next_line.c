@@ -62,8 +62,10 @@ char	*buff_2_cache(char *buffer, int *read_status)
 	char		*out;
 	char		*tmp;
 	int			end_of_line;
+	//int tmpread;
 
 	out = NULL;
+	//tmpread = 1;
 	//Join du cache et du buffer
 	cache = ft_strjoin_buff(cache, buffer);
 	//Si cache contient juste un \0 ??
@@ -102,9 +104,13 @@ char	*buff_2_cache(char *buffer, int *read_status)
 		//Mise a jour du cache
 		cache = tmp;
 		//On as lu ? (Pas sur de cette ligne)
-		*read_status = 1;
+		//tmpread = 1;
 	}
 	//On renvoie la ligne lue
+	if(ft_strlen(cache) == 0 && *read_status == 0)
+		*read_status = 0;
+	else
+		*read_status = 1;
 	return (out);
 }
 
@@ -114,6 +120,15 @@ int		get_next_line(int fd, char **line)
 	char	buffer[BUFFER_SIZE];
 	int		read_status;
 
+	if(BUFFER_SIZE == 0)
+		return -1;
+	if(fd == -1)
+		return (0);
+	if(line == NULL)
+	{
+		if(!(malloc(sizeof(char *))))
+			return (0);
+	}
 	//Remplissage du buffer de \0
 	// if(buffer == NULL)
 	// {
@@ -123,6 +138,7 @@ int		get_next_line(int fd, char **line)
 	initbfr(buffer);
 	//Read 
 	read_status = read(fd, buffer, BUFFER_SIZE);
+	//printf("read_status %d\n",read_status );
 	//Free *line si déja alloué
 	if (*line != NULL)
 	{
