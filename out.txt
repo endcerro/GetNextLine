@@ -1,0 +1,16 @@
+read status 1
+|Cette ligne se termine par un point.
+read status 1
+|La ligne suivante est vide.
+read status 1
+|
+read status 2
+|Les 2 lignes suivantes sont vides
+read status 1
+|
+read status 1
+|
+read status 1
+|Et encore les 2 suivantes.
+read status 0
+|
