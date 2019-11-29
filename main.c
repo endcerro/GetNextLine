@@ -3,30 +3,22 @@
 
 int main(int ac, char *av[ac])
 {
-
-    int fd = open(av[1], O_RDONLY);
-	char **line;
-	line = malloc(sizeof(char*));
-	if(line == NULL)
-		return (0);
-	*line = NULL;
+	char buf[1];
+	char *line;
+	int fd = open(av[1], O_RDONLY);
+	//read(0, buf, 1);
 	int status = 1;
-	//while(status != 0)
-	//{
-		status = get_next_line(fd, line);
-		//printf("status = %d\n",status );
-		//if(status > 0)
-		//{
-			//printf("|%s\n",*line);
-			status = get_next_line(fd, line);
-			printf("|%s\n",*line);
-			
-			//free(*line);
-			//*line=NULL;
-		//}
-	//}
-	free(*line);
+ 	while(status != 0)
+	{
+	 	status = get_next_line(fd, &line);
+		if (status > 0)
+		{
+			printf("%s\n", line);
+			free(line);
+		}
+	}
+	printf("BOUCLE FIN\n%s\n", line);
 	free(line);
 	close(fd);
-    return 0;
+	return 0;
 }
