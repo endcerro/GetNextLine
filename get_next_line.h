@@ -29,5 +29,7 @@ int		ft_strchr_int(const char *str, int c);
 char	*ft_substr(char const *s, int start, size_t len);
 char	*ft_strdup(const char *s1);
 char	*get_line_from_cache(char **cache, int read_status);
+char  	*refresh_cache(char **cache);
+
 
 #endif

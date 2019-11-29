@@ -55,6 +55,32 @@ char	*ft_strjoin_buff(char *cache, char *s2)
 	return (cp);
 }
 
+char  	*refresh_cache(char **cache)
+{
+	int i;
+
+	i = 0;
+	int j;
+
+	j = 0;
+	char *out;
+
+	while((*cache)[i] != '\n' && (*cache)[i] != '\0')
+		i++;
+	//printf("end char = |%d|\n",(*cache)[i] );
+
+	out = malloc(sizeof(char) * (ft_strlen(*cache) - i));
+	//Protect malloc
+	if((*cache)[i] != '\n')
+		i++;
+	printf("Current char %d\n", (*cache)[i]);
+	while((*cache)[i] != '\0')
+		out[j++] = (*cache)[i++];
+	out[j] = '\0';
+	//printf("out = %s\n",out );
+	//free(*cache);
+	return (out);
+}
 
 char	*get_line_from_cache(char **cache, int read_status)
 {
@@ -77,14 +103,15 @@ char	*get_line_from_cache(char **cache, int read_status)
 			j++;
 		}
 		out[j] = '\0';
-		tmp = ft_strdup((const char *) (*cache + i + 1));
-		free(*cache);
-		*cache = tmp;
+		
+		*cache = refresh_cache(cache);
+		//i++;
+		//tmp = ft_strdup((const char *) (*cache + i));
+		//free(*cache);
+		//*cache = tmp;
 	}
 	else
-	{
 		return (NULL);
-	}
 	return(out);
 }
 
@@ -107,7 +134,14 @@ int		get_next_line(int fd, char **line)
 		cache = tmp;
 		*line = get_line_from_cache(&cache, read_status);
 	}	
-	if(ft_strlen(cache) > 0)	
+	if(ft_strlen(cache) > 0)
+	{
+		//printf("Sortie avec cache > 0\n");
 		return 1;
-	return read_status;
+	}
+	else
+	{
+		//printf("Sortie avec cache =< 0\n");
+		return read_status;
+	}
 }
