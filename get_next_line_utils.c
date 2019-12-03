@@ -74,15 +74,9 @@ int		ft_strchr_int(const char *str, int c)
 
 	i = -1;
 	while (str[++i])
-	{	
 		if (str[i] == c)
 			return (i);
-	}
-	//printf("here char = %d\n", str[i]);
 	if (str[i] == c)
-	{
-		//printf("HERE, i = %d \n",i);
 		return (i);
-	}
 	return (-1);
 }
