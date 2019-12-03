@@ -12,19 +12,6 @@
 
 #include "get_next_line.h"
 
-char	*ft_strchr(const char *str, int c)
-{
-	while (*str)
-	{
-		if (*str == c)
-			return ((char *)str);
-		str++;
-	}
-	if (*str == c)
-		return ((char *)str);
-	return (0);
-}
-
 char	*ft_strjoin_buff(char *cache, char *s2)
 {
 	char	*out;
@@ -47,10 +34,7 @@ char	*ft_strjoin_buff(char *cache, char *s2)
 		*(out++) = s2[size++];
 	*out = '\0';
 	if (cache != NULL)
-	{
 		free(cache);
-		cache = NULL;
-	}
 	return (cp);
 }
 

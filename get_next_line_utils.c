@@ -12,20 +12,6 @@
 
 #include "get_next_line.h"
 
-char	*ft_strdup(const char *s1)
-{
-	int		i;
-	char	*p;
-
-	if (!(p = malloc(sizeof(char) * (ft_strlen((char *)s1) + 1))))
-		return (0);
-	i = -1;
-	while (s1[++i])
-		p[i] = s1[i];
-	p[i] = 0;
-	return (p);
-}
-
 void	initbfr(char *buff)
 {
 	int i;
@@ -47,26 +33,6 @@ int		ft_strlen(char *str)
 	return (cpt);
 }
 
-char	*ft_substr(char const *s, int start, size_t len)
-{
-	char	*out;
-	char	*cp;
-	size_t	i;
-
-	i = 0;
-	out = 0;
-	if (!s)
-		return (0);
-	if (ft_strlen((char *)s) < start || len == 0)
-		return (ft_strdup(""));
-	if (!(out = malloc(sizeof(char) * (len + 1))))
-		return (0);
-	cp = out;
-	while (s[start + i] && i < len)
-		*(out++) = s[start + i++];
-	*out = 0;
-	return (cp);
-}
 
 int		ft_strchr_int(const char *str, int c)
 {
