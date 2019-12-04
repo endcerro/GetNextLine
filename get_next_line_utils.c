@@ -33,7 +33,6 @@ int		ft_strlen(char *str)
 	return (cpt);
 }
 
-
 int		ft_strchr_int(const char *str, int c)
 {
 	int i;

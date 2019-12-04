@@ -38,7 +38,7 @@ char	*ft_strjoin_buff(char *cache, char *s2)
 	return (cp);
 }
 
-char	*refresh_cache(char **cache)
+void 	refresh_cache(char **cache)
 {
 	int		i;
 	int		j;
@@ -48,12 +48,13 @@ char	*refresh_cache(char **cache)
 	j = 0;
 	while ((*cache)[i] != '\n' && (*cache)[i] != '\0')
 		i++;
-	out = malloc(sizeof(char) * (ft_strlen(*cache) - i));
+	if (!(out = malloc(sizeof(char) * (ft_strlen(*cache) - i))))
+		return ;
 	while ((*cache)[++i] != '\0')
 		out[j++] = (*cache)[i];
 	out[j] = '\0';
 	free(*cache);
-	return (out);
+	*cache = out;
 }
 
 char	*get_line_from_cache(char **cache, int *read_status)
@@ -63,25 +64,22 @@ char	*get_line_from_cache(char **cache, int *read_status)
 	int		j;
 
 	out = NULL;
-	j = 0;
+	j = -1;
 	i = ft_strchr_int(*cache, '\n');
 	if (i != -1)
 		*read_status = 1;
+
 	if (*read_status == 0 && i == -1)
 		i = ft_strchr_int(*cache, '\0');
 	if (i != -1)
 	{
-		out = malloc(sizeof(char) * (i + 1));
-		j--;
+		if (!(out = malloc(sizeof(char) * (i + 1))))
+			return (NULL);
 		while (++j < i)
 			out[j] = (*cache)[j];
-		if (i == 0 && (*cache)[i] != '\0' && *read_status == 0)
-			*read_status = 1;
 		out[j] = '\0';
-		*cache = refresh_cache(cache);
+		refresh_cache(cache);
 	}
-	else
-		return (NULL);
 	return (out);
 }
 
@@ -89,9 +87,9 @@ int		get_next_line(int fd, char **line)
 {
 	char		buffer[BUFFER_SIZE];
 	static char	*cache;
-	char		*tmp;
 	int			read_status;
 
+	
 	if (BUFFER_SIZE == 0 || fd == -1 || line == NULL)
 		return (-1);
 	read_status = 1;
@@ -100,8 +98,7 @@ int		get_next_line(int fd, char **line)
 	{
 		initbfr(buffer);
 		read_status = read(fd, buffer, BUFFER_SIZE);
-		tmp = ft_strjoin_buff(cache, buffer);
-		cache = tmp;
+		cache = ft_strjoin_buff(cache, buffer);
 		*line = get_line_from_cache(&cache, &read_status);
 	}
 	return (read_status);

@@ -25,6 +25,6 @@ int		ft_strlen(char *str);
 char	*ft_strjoin_buff(char *cache, char *s2);
 int		ft_strchr_int(const char *str, int c);
 char	*get_line_from_cache(char **cache, int *read_status);
-char	*refresh_cache(char **cache);
+void 	refresh_cache(char **cache);
 
 #endif
