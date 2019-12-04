@@ -38,6 +38,7 @@ char	*ft_strjoin_buff(char *cache, char *s2)
 	return (cp);
 }
 
+//INVALID WRITE OF SIZE 1 
 void 	refresh_cache(char **cache)
 {
 	int		i;
@@ -48,7 +49,7 @@ void 	refresh_cache(char **cache)
 	j = 0;
 	while ((*cache)[i] != '\n' && (*cache)[i] != '\0')
 		i++;
-	if (!(out = malloc(sizeof(char) * (ft_strlen(*cache) - i))))
+	if (!(out = malloc(sizeof(char) * (ft_strlen(*cache) - i + 1))))
 		return ;
 	while ((*cache)[++i] != '\0')
 		out[j++] = (*cache)[i];
@@ -89,7 +90,7 @@ int		get_next_line(int fd, char **line)
 	static char	*cache;
 	int			read_status;
 
-	
+
 	if (BUFFER_SIZE == 0 || fd == -1 || line == NULL)
 		return (-1);
 	read_status = 1;
