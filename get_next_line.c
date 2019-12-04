@@ -102,5 +102,6 @@ int		get_next_line(int fd, char **line)
 		cache = ft_strjoin_buff(cache, buffer);
 		*line = get_line_from_cache(&cache, &read_status);
 	}
+//So *line == NULL, *line = strdup("")?
 	return (read_status);
 }
