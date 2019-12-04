@@ -12,6 +12,20 @@
 
 #include "get_next_line.h"
 
+char	*ft_strdup(char *s1)
+{
+	int		i;
+	char	*p;
+
+	if (!(p = malloc(sizeof(char) * (ft_strlen(s1) + 1))))
+		return (0);
+	i = -1;
+	while (s1[++i])
+		p[i] = s1[i];
+	p[i] = 0;
+	return (p);
+}
+
 void	initbfr(char *buff)
 {
 	int i;

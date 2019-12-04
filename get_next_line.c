@@ -84,6 +84,7 @@ char	*get_line_from_cache(char **cache, int *read_status)
 	return (out);
 }
 
+
 int		get_next_line(int fd, char **line)
 {
 	char		buffer[BUFFER_SIZE];
@@ -102,6 +103,10 @@ int		get_next_line(int fd, char **line)
 		cache = ft_strjoin_buff(cache, buffer);
 		*line = get_line_from_cache(&cache, &read_status);
 	}
+	if(read_status == 0)
+		free(cache);
 //So *line == NULL, *line = strdup("")?
+	if(*line == NULL)
+		*line = ft_strdup("");
 	return (read_status);
 }

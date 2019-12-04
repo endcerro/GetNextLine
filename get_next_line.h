@@ -19,6 +19,7 @@
 
 # include <unistd.h>
 
+char	*ft_strdup(char *s1);
 void	initbfr(char *buff);
 int		get_next_line(int fd, char **line);
 int		ft_strlen(char *str);
