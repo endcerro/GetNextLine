@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-char	*ft_strjoin_buff(char *cache, char *s2)
+static char	*ft_strjoin_buff(char *cache, char *s2)
 {
 	char	*out;
 	char	*cp;
@@ -38,7 +38,7 @@ char	*ft_strjoin_buff(char *cache, char *s2)
 	return (cp);
 }
 
-void	refresh_cache(char **cache)
+static void	refresh_cache(char **cache)
 {
 	int		i;
 	int		j;
@@ -57,14 +57,14 @@ void	refresh_cache(char **cache)
 	*cache = out;
 }
 
-char	*get_line_from_cache(char **cache, int *read_status)
+static char	*get_line_from_cache(char **cache, int *read_status)
 {
 	int		i;
 	char	*out;
 	int		j;
 
 	if (cache == NULL)
-		return NULL;
+		return (NULL);
 	out = NULL;
 	j = -1;
 	i = ft_strchr_int(*cache, '\n');
@@ -84,7 +84,13 @@ char	*get_line_from_cache(char **cache, int *read_status)
 	return (out);
 }
 
-int		get_next_line(int fd, char **line)
+static int	just_two_more_lines_plz(char **line)
+{
+	*line = ft_strdup("");
+	return (0);
+}
+
+int			get_next_line(int fd, char **line)
 {
 	char		buffer[BUFFER_SIZE];
 	static char	*cache;
@@ -97,12 +103,8 @@ int		get_next_line(int fd, char **line)
 	while (*line == NULL && read_status > 0)
 	{
 		initbfr(buffer);
-		read_status = read(fd, buffer, BUFFER_SIZE);
-		if(read_status == 0 && cache == NULL)
-		{
-			*line = ft_strdup("");
-			return 0;
-		}
+		if ((read_status = read(fd, buffer, BUFFER_SIZE)) == 0 && cache == NULL)
+			return (just_two_more_lines_plz(line));
 		cache = ft_strjoin_buff(cache, buffer);
 		*line = get_line_from_cache(&cache, &read_status);
 	}

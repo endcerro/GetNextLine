@@ -23,9 +23,6 @@ char	*ft_strdup(char *s1);
 void	initbfr(char *buff);
 int		get_next_line(int fd, char **line);
 int		ft_strlen(char *str);
-char	*ft_strjoin_buff(char *cache, char *s2);
 int		ft_strchr_int(const char *str, int c);
-char	*get_line_from_cache(char **cache, int *read_status);
-void	refresh_cache(char **cache);
 
 #endif

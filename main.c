@@ -14,14 +14,14 @@ int main(int ac, char *av[ac])
 		free(line);
 	}
 	
-	fd = open(av[2], O_RDONLY);
-	status = 1;
-	while(status > 0)
-	{
-	  	status = get_next_line(fd, &line);
-	 	printf("!%d |%s!\n",status, line);
-		free(line);
-	}
+	// fd = open(av[2], O_RDONLY);
+	// status = 1;
+	// while(status > 0)
+	// {
+	//   	status = get_next_line(fd, &line);
+	//  	printf("!%d |%s!\n",status, line);
+	// 	free(line);
+	// }
 	//status = get_next_line(fd, &line);
 	
 	//printf("!%d |%s!\n",status, line);
