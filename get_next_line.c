@@ -63,6 +63,8 @@ char	*get_line_from_cache(char **cache, int *read_status)
 	char	*out;
 	int		j;
 
+	if (cache == NULL)
+		return NULL;
 	out = NULL;
 	j = -1;
 	i = ft_strchr_int(*cache, '\n');
@@ -96,6 +98,11 @@ int		get_next_line(int fd, char **line)
 	{
 		initbfr(buffer);
 		read_status = read(fd, buffer, BUFFER_SIZE);
+		if(read_status == 0 && cache == NULL)
+		{
+			*line = ft_strdup("");
+			return 0;
+		}
 		cache = ft_strjoin_buff(cache, buffer);
 		*line = get_line_from_cache(&cache, &read_status);
 	}
