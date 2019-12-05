@@ -1,0 +1,181 @@
+
+
+	building with main: [48;5;39m[38;5;0m			mains/main.c			[m
+
+
+		test_file is:		[48;5;172m[38;5;0m		test_file1		[m
+when BUFFER_SIZE=1:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=2:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=3:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=4:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=5:	[32mOK with file ending with a '\ n'[0m
+
+
+		test_file is:		[48;5;172m[38;5;0m		test_file2		[m
+when BUFFER_SIZE=1:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=2:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=3:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=4:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=5:	[32mOK with file ending with a '\ n'[0m
+
+
+		test_file is:		[48;5;172m[38;5;0m		test_file3		[m
+when BUFFER_SIZE=1:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=2:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=3:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=4:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=5:	[32mOK with file ending with a '\ n'[0m
+
+
+		test_file is:		[48;5;172m[38;5;0m		test_file4		[m
+when BUFFER_SIZE=1:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=2:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=3:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=4:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=5:	[32mOK with file ending with a '\ n'[0m
+
+
+		test_file is:		[48;5;172m[38;5;0m		test_file5		[m
+when BUFFER_SIZE=1:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=2:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=3:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=4:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=5:	[32mOK with file ending with a '\ n'[0m
+
+
+		test_file is:		[48;5;172m[38;5;0m		test_file6		[m
+when BUFFER_SIZE=1:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=2:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=3:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=4:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=5:	[32mOK with file ending with a '\ n'[0m
+
+
+		test_file is:		[48;5;172m[38;5;0m		test_file7		[m
+when BUFFER_SIZE=1:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=2:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=3:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=4:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=5:	[32mOK with file ending with a '\ n'[0m
+
+
+		test_file is:		[48;5;172m[38;5;0m		test_file8		[m
+when BUFFER_SIZE=1:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=2:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=3:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=4:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=5:	[32mOK with file ending with a '\ n'[0m
+
+
+		test_file is:		[48;5;172m[38;5;0m		test_file9		[m
+when BUFFER_SIZE=1:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=2:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=3:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=4:	[32mOK with file ending with a '\ n'[0m
+when BUFFER_SIZE=5:	[32mOK with file ending with a '\ n'[0m
+		when BUFFER_SIZE= ⚠️  [48;5;194m[38;5;0m 1024 [m ⚠️ : [32mOK[m
+
+
+	building with main: [48;5;39m[38;5;0m		mains/main_INPUTS_WRONG.c		[m
+
+
+		test_file is:		[48;5;172m[38;5;0m		Makefile		[m
+when BUFFER_SIZE=3:	[32mGNL OK with WRONG_INPUTS[0m
+when BUFFER_SIZE=0:	[32mGNL OK with BUFFER_SIZE = 0[0m
+
+
+	building with main: [48;5;39m[38;5;0m		mains/main_STDIN_FILENO.c		[m
+
+
+		test_file is:		[48;5;172m[38;5;0m	[48;5;194m[38;5;0m	/dev/stdin	[48;5;172m[38;5;0m	[m BUFFER_SIZE=12
+
+
+			lets see how your GNL behaves with the STDIN_FILENO:
+
+<--------END
+your GNL returned:0
+
+			now compare with read behavior:
+<--------END
+0
+
+
+	building with main: [48;5;39m[38;5;0m		mains/main_dev_null.c			[m
+
+
+		test_file is:		[48;5;172m[38;5;0m	[48;5;194m[38;5;0m	/dev/null	[48;5;172m[38;5;0m	[m
+when BUFFER_SIZE=12:	[32mGNL OK with /dev/null[0m
+
+
+	building with main: [48;5;39m[38;5;0m		mains/main_no_end_of_line_at_end.c	[m
+
+
+		test_file is:		[48;5;172m[38;5;0m		test_file10		[m
+when BUFFER_SIZE=3:	[32mGNL OK with no '\ n' at end of file[0m
+when BUFFER_SIZE=4:	[32mGNL OK with no '\ n' at end of file[0m
+when BUFFER_SIZE=5:	[32mGNL OK with no '\ n' at end of file[0m
+
+
+		test_file is:		[48;5;172m[38;5;0m		test_file11		[m
+when BUFFER_SIZE=3:	[32mGNL OK with no '\ n' at end of file[0m
+when BUFFER_SIZE=4:	[32mGNL OK with no '\ n' at end of file[0m
+when BUFFER_SIZE=5:	[32mGNL OK with no '\ n' at end of file[0m
+
+
+		test_file is:		[48;5;172m[38;5;0m		test_file12		[m
+when BUFFER_SIZE=3:	[32mGNL OK with no '\ n' at end of file[0m
+when BUFFER_SIZE=4:	[32mGNL OK with no '\ n' at end of file[0m
+when BUFFER_SIZE=5:	[32mGNL OK with no '\ n' at end of file[0m
+
+
+		test_file is:		[48;5;172m[38;5;0m		test_file13		[m
+when BUFFER_SIZE=3:	[32mGNL OK with no '\ n' at end of file[0m
+when BUFFER_SIZE=4:	[32mGNL OK with no '\ n' at end of file[0m
+when BUFFER_SIZE=5:	[32mGNL OK with no '\ n' at end of file[0m
+
+
+		test_file is:		[48;5;172m[38;5;0m		test_file14		[m
+when BUFFER_SIZE=3:	[32mGNL OK with no '\ n' at end of file[0m
+when BUFFER_SIZE=4:	[32mGNL OK with no '\ n' at end of file[0m
+when BUFFER_SIZE=5:	[32mGNL OK with no '\ n' at end of file[0m
+
+
+		test_file is:		[48;5;172m[38;5;0m		test_file15		[m
+when BUFFER_SIZE=3:	[32mGNL OK with no '\ n' at end of file[0m
+when BUFFER_SIZE=4:	[32mGNL OK with no '\ n' at end of file[0m
+when BUFFER_SIZE=5:	[32mGNL OK with no '\ n' at end of file[0m
+
+
+		test_file is:		[48;5;172m[38;5;0m		test_file16		[m
+when BUFFER_SIZE=3:	[32mGNL OK with no '\ n' at end of file[0m
+when BUFFER_SIZE=4:	[32mGNL OK with no '\ n' at end of file[0m
+when BUFFER_SIZE=5:	[32mGNL OK with no '\ n' at end of file[0m
+
+
+		test_file is:		[48;5;172m[38;5;0m		test_file17		[m
+when BUFFER_SIZE=3:	[32mGNL OK with no '\ n' at end of file[0m
+when BUFFER_SIZE=4:	[32mGNL OK with no '\ n' at end of file[0m
+when BUFFER_SIZE=5:	[32mGNL OK with no '\ n' at end of file[0m
+
+
+
+ 🔎 check if the read function is called with 'BUFFER_SIZE': 🔎
+
+1:		read_status = read(fd, buffer, BUFFER_SIZE);
+[38;5;2m
+	=====> ✅
+[0m
+
+
+
+ 🔎 check if a global was declared: 🔎
+
+[38;5;2m	=====> ✅	 0 [0mglobal variable used.
+
+
+
+
+ 🔎 check how many static variables were declared: 🔎
+
+[38;5;2m	=====> ✅        1[m static variable used in basic files.
+

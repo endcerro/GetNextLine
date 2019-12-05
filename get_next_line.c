@@ -38,8 +38,7 @@ char	*ft_strjoin_buff(char *cache, char *s2)
 	return (cp);
 }
 
-//INVALID WRITE OF SIZE 1 
-void 	refresh_cache(char **cache)
+void	refresh_cache(char **cache)
 {
 	int		i;
 	int		j;
@@ -69,7 +68,6 @@ char	*get_line_from_cache(char **cache, int *read_status)
 	i = ft_strchr_int(*cache, '\n');
 	if (i != -1)
 		*read_status = 1;
-
 	if (*read_status == 0 && i == -1)
 		i = ft_strchr_int(*cache, '\0');
 	if (i != -1)
@@ -84,13 +82,11 @@ char	*get_line_from_cache(char **cache, int *read_status)
 	return (out);
 }
 
-
 int		get_next_line(int fd, char **line)
 {
 	char		buffer[BUFFER_SIZE];
 	static char	*cache;
 	int			read_status;
-
 
 	if (BUFFER_SIZE == 0 || fd == -1 || line == NULL)
 		return (-1);
@@ -103,10 +99,12 @@ int		get_next_line(int fd, char **line)
 		cache = ft_strjoin_buff(cache, buffer);
 		*line = get_line_from_cache(&cache, &read_status);
 	}
-	if(read_status == 0)
+	if (read_status == 0 && cache != NULL)
+	{
 		free(cache);
-//So *line == NULL, *line = strdup("")?
-	if(*line == NULL)
+		cache = NULL;
+	}
+	if (*line == NULL)
 		*line = ft_strdup("");
 	return (read_status);
 }
